@@ -1,0 +1,104 @@
+---
+title: "Introduction to Epidemiology & Biostatistics"
+author: "PD Dr. Christian L. Althaus"
+date: "`r format(Sys.time(), '%e %B %Y')`"
+output:
+  beamer_presentation:
+    theme: UniBernCustom
+  slidy_presentation: default
+  ioslides_presentation: default
+subtitle: Review in mathematics and statistics
+institute: Institute of Social and Preventive Medicine, University of Bern, Bern,
+  Switzerland
+classoption: aspectratio=169, t
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Basic concepts of population dynamics
+An equation that relates the derivatives of a variable (e.g., the change of the size of a population) to the value of the variable itself (the population) as a continuous function of a single parameter (e.g., time) is called an ordinary differential equation (ODE).
+
+Let us assume a population that increases or decreases depending on its current value. In mathematical terms, this can be expressed as $$\frac{dN(t)}{dt} = F(N(t)),$$ where $F$ is a function that relates the population's rate of change $dN(t)/dt$ to its size $N(t)$ at time $t$
+
+Note: The time dependence of $N$ can be skipped for notational convenience.
+
+## Exponential growth
+The simplest model of population growth is obtained if one assumes that the per capita growth rate is constant over time, i.e., $$\frac{dN}{dt} = r N,$$ where the growth rate is given by $r$.
+\vfill
+\centering What is the solution to this differential equation?
+\vfill
+
+## Exponential growth
+The solution to the differential equation is very simple and can be obtained through integration:
+\begin{align*}
+\int_{N(0)}^{N(t)}\frac{1}{N}dN &= \int_0^t r dt,\\
+\text{log}\left(\frac{N(t)}{N(0)}\right) &= r t,\\
+N(t) &= N(0) e^{r t},
+\end{align*}
+where $N(0)$ is the population density at time $t = 0$. Thus, the solution is the well-known exponential function.
+
+## HIV-1 epidemic in South Africa
+::: {.columns}
+:::: {.column width="50%"}
+The exponential growth is often a reasonable description for the initial growth of biological populations in the absence of limiting factors.
+
+\vspace*{\baselineskip}
+
+An example of an almost exponential increase of an infection is the early HIV-1 epidemic in pregnant women South Africa. It can be seen that in the first few years the prevalence roughly doubles each year. 
+
+\vspace*{\baselineskip}
+
+Data: National Antenatal Sentinel HIV & Syphilis Prevalence Survey in South Africa.
+
+::::
+:::: {.column width="50%"}
+\includegraphics[width=\textwidth]{figures/hiv_exponential.pdf}
+::::
+:::
+
+## Removal or death of individuals
+Removal or death of individuals can also decrease the size of the population. Mathematically, this can be described by $$\frac{dN}{dt} = - \delta N,$$ where $\delta$ represents the rate at which individuals are removed from the population.
+\vfill
+\centering Where do we see such a pattern?
+\vfill
+
+## Persistence of chlamydia in women
+::: {.columns}
+:::: {.column width="50%"}
+- Most commonly reported sexually transmitted infection (STI) in many countries
+- Gram negative intracellular bacterium with a two-stage life cycle (48-72 hours)
+- Most infections are asymptomatic but can be treated with antibiotics.
+- Spontaneous clearance at a constant rate results in exponentially distributed durations of infection.
+- Estimated average infectious duration: 433 days (95% CI: 420–447 days)
+::::
+:::: {.column width="50%"}
+\includegraphics[width=\textwidth]{figures/chlamydia_clearance.pdf}
+Figure: Althaus et al. (2010, Epidemics)
+::::
+:::
+
+## Density-dependance
+By combining exponential growth and death, one would expect infections to either grow or die out, depending on whether $(r- \delta)$ is positive or negative. However, it is unrealistic to assume a constant per capita growth rate, as no population or infection can grow indefinitely.
+
+Resource depletion and other factors can result in density-dependent growth rates.
+
+## Logistic growth
+The simplest way to introduce a density dependent effect is to assume that the per capita growth rate decreases linearly with population size, i.e., $r(1 - N/K)$, where $K$ is the carrying capacity. The corresponding differential equation, the logistic differential equation, is thus given by $$\frac{dN}{dt} = r N (1 - \frac{N}{K}).$$
+
+The parameter $r$ now describes maximal per capita growth rate (i.e., the per capita growth rate when the population is vanishingly small). The analytic solution of this equation is given by $$N(t) = N(0) \frac{K}{N(0)+(K-N(0))e^{-rt}},$$ where $N(0)$ is again the population size at time $t = 0$.
+
+## Logistic growth
+::: {.columns}
+:::: {.column width="50%"}
+The interpretation of the carrying capacity $K$ becomes clear when the behavior of this equation is inspected for large times. Carrying capacity represents the value that the population attains as time $t$ proceeds to infinity.
+
+\vspace*{\baselineskip}
+
+Density dependent effects come into play if populations interact, e.g., in the population dynamics of infectious diseases, where the number of infected individuals can grow only as long they come in contact with enough susceptible individuals.
+::::
+:::: {.column width="50%"}
+\includegraphics[width=\textwidth]{figures/logistic_growth.pdf}
+::::
+:::
