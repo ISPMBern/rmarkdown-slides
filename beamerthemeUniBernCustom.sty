@@ -91,7 +91,7 @@
     \raisebox{-\height-2\beamer@ubBorderHeight}[0pt][0pt]{\hspace*{0.86\paperwidth}\includegraphics[width=0.125\paperwidth]{figures/ublogo.pdf}}
    }{}
 
-   \ifnumgreater{\c@framenumber}{2}{
+   \ifnumgreater{\c@framenumber}{1}{
         \ifdefempty{\insertframesubtitle}{
           \rule{0pt}{6ex+\beamer@ubTitleHeight}\\
           %\color{ubGrey}\rule{\paperwidth}{\paperheight-\beamer@ubTitleHeight-\beamer@ubFooterHeight-6ex}
@@ -104,7 +104,7 @@
 }
 
 \defbeamertemplate*{headline}{uni bern}{% 
-    \ifnumgreater{\c@framenumber}{2}{
+    \ifnumgreater{\c@framenumber}{1}{
       \vspace{3.5ex}
       \hspace{4.5ex}\inserttitle { - } \insertsubtitle
     }{}
